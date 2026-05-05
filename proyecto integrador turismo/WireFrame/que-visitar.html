@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qué Visitar — necochea.tur.ar</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body class="inner-page page-que-visitar">
+
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="img/logo.png" alt="Logo Necochea Turismo">
+    </div>
+    <div class="nav-links">
+      <div class="nav-item"><a class="nav-link" href="index.html">Inicio</a></div>
+      <div class="nav-item"><a class="nav-link active" href="que-visitar.html">Qué Visitar <span class="arrow">▾</span></a>
+        <div class="dropdown"><a href="#">Lago de Los Cisnes</a><a href="#">Parque Miguel Lillo</a><a href="#">Playas del Centro</a><a href="#">Paseo de La Ribera</a><a href="#">Playas de Quequén</a><a href="#">Termas Médano Blanco</a><a href="#">Parque Eólico</a><a href="que-visitar.html" style="color:#8161AF;font-weight:700">Ver todos →</a></div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="servicios.html">Servicios <span class="arrow">▾</span></a>
+        <div class="dropdown"><a href="#">Alojamientos</a><a href="#">Gastronomía</a><a href="#">Balnearios</a><a href="#">Transporte</a></div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="que-hacer.html">Qué Hacer <span class="arrow">▾</span></a>
+        <div class="dropdown"><a href="#">Surf y Bodyboard</a><a href="#">Cabalgatas</a><a href="#">Parapente</a><a href="#">Pesca Deportiva</a></div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></div>
+    </div>
+    <div class="nav-cta" aria-label="Redes sociales">
+      <a class="nav-social" href="#" aria-label="Facebook"><img src="img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="Instagram"><img src="img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="YouTube"><img src="img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="Twitter / X"><img src="img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="TikTok"><img src="img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation"></a>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <div class="ham-line" style="width:22px"></div><div class="ham-line" style="width:16px"></div><div class="ham-line" style="width:22px"></div>
+    </div>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <div class="mob-menu-inner">
+      <a class="mob-item" href="index.html"><span>Inicio</span><span class="arr">›</span></a>
+      <a class="mob-item active" href="que-visitar.html"><span>Qué Visitar</span><span class="arr">›</span></a>
+      <a class="mob-item" href="servicios.html"><span>Servicios</span><span class="arr">›</span></a>
+      <a class="mob-item" href="que-hacer.html"><span>Qué Hacer</span><span class="arr">›</span></a>
+      <a class="mob-item" href="noticias.html"><span>Noticias</span><span class="arr">›</span></a>
+      <div class="mob-socials"><div class="mob-social">f</div><div class="mob-social">ig</div><div class="mob-social">yt</div><div class="mob-social">tw</div></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Inicio</a> › <span>Qué Visitar</span></div>
+    <div class="page-title">Qué Visitar</div>
+    <div class="page-sub">Descubrí los lugares más hermosos de Necochea y sus alrededores</div>
+    <div class="page-line" style="background:#8161AF"></div>
+  </div>
+</div>
+
+<div class="filters-bar">
+  <div class="container">
+    <div class="filters-inner">
+      <span class="filter-label">Filtrar por:</span>
+      <div class="filter-btn active" onclick="setFilter(this)">Todos</div>
+      <div class="filter-btn" onclick="setFilter(this)">Playa</div>
+      <div class="filter-btn" onclick="setFilter(this)">Naturaleza</div>
+      <div class="filter-btn" onclick="setFilter(this)">Paseo</div>
+      <div class="filter-btn" onclick="setFilter(this)">Historia</div>
+      <div class="filter-btn" onclick="setFilter(this)">Termas</div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="cards-grid">
+
+      <a class="dest-card" href="detalle-que-visitar.html">
+        <div class="card-img" style="background:#c8e8f4">
+          <span class="card-badge" style="background:#8CD4EF">Playa</span>
+          <img src="img/que-visitar/playa-necochea.JPG" alt="Playas del Centro" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#8CD4EF28;color:#1a6080">Playa</div>
+          <div class="card-name">Playas del Centro</div>
+          <div class="card-desc">Las playas más emblemáticas de Necochea, con guardavidas, balnearios y acceso para personas con movilidad reducida.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Costanera Central</div><div class="card-meta-item">🌊 Apta para baño</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </a>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#cce4c4">
+          <span class="card-badge" style="background:#9DC138">Naturaleza</span>
+          <img src="img/que-visitar/parque.JPG" alt="Parque Miguel Lillo" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#9DC13828;color:#3a5810">Naturaleza</div>
+          <div class="card-name">Parque Miguel Lillo</div>
+          <div class="card-desc">El bosque de pinos más extenso de Sudamérica, con senderos, picnic, fauna autóctona y acceso directo a la playa.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Av. 2 y el mar</div><div class="card-meta-item">🚶 Senderismo</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#e8e0f4">
+          <span class="card-badge" style="background:#8161AF">Paseo</span>
+          <img src="img/que-visitar/lago.png" alt="Lago de Los Cisnes" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#8161AF28;color:#4a2080">Paseo</div>
+          <div class="card-name">Lago de Los Cisnes</div>
+          <div class="card-desc">Hermoso espejo de agua natural ideal para paseos en bote, fotografía y relajación en medio de la naturaleza.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Parque Lillo</div><div class="card-meta-item">🦢 Fauna lacustre</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#fde8cc">
+          <span class="card-badge" style="background:#CC753F">Historia</span>
+          <img src="img/Fondos/escollera.png" alt="Puerto Quequén" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#CC753F28;color:#6a2a00">Historia</div>
+          <div class="card-name">Puerto Quequén</div>
+          <div class="card-desc">Puerto granero de gran importancia, con paseos costeros, gastronomía de mariscos y vistas únicas al río.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Quequén</div><div class="card-meta-item">🚢 Paseos náuticos</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#c8e8f4">
+          <span class="card-badge" style="background:#8CD4EF">Playa</span>
+          <img src="img/que-visitar/playa-quequen.jpg" alt="Playas de Quequén" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#8CD4EF28;color:#1a6080">Playa</div>
+          <div class="card-name">Playas de Quequén</div>
+          <div class="card-desc">Playas más tranquilas y extensas, ideales para quienes buscan descanso lejos de la multitud.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Quequén</div><div class="card-meta-item">🌊 Menos concurrida</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#fef0c0">
+          <span class="card-badge" style="background:#FCCD04;color:#3a2a00">Termas</span>
+          <img src="img/que-visitar/termas.jpeg" alt="Termas Médano Blanco" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#FCCD0428;color:#6a4a00">Termas</div>
+          <div class="card-name">Termas Médano Blanco</div>
+          <div class="card-desc">Complejo termal con piscinas de agua caliente mineral, spa y servicios de bienestar en plena naturaleza.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Ruta 228</div><div class="card-meta-item">♨️ Aguas termales</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#cce4c4">
+          <span class="card-badge" style="background:#9DC138">Naturaleza</span>
+          <img src="img/que-visitar/parque-eolico.jpg" alt="Parque Eólico" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#9DC13828;color:#3a5810">Naturaleza</div>
+          <div class="card-name">Parque Eólico</div>
+          <div class="card-desc">Uno de los parques eólicos más importantes de la provincia, con visitas guiadas y vistas panorámicas impresionantes.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Acceso Ruta 228</div><div class="card-meta-item">⚡ Visitas guiadas</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#e8e0f4">
+          <span class="card-badge" style="background:#8161AF">Paseo</span>
+          <img src="img/que-visitar/paseo-ribera.jpg" alt="Paseo de La Ribera" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#8161AF28;color:#4a2080">Paseo</div>
+          <div class="card-name">Paseo de La Ribera</div>
+          <div class="card-desc">Paseo costero con restaurantes, bares y vistas al río Quequén. Ideal para tardes tranquilas al atardecer.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Costanera Quequén</div><div class="card-meta-item">🌅 Atardecer</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="card-img" style="background:#f0d8e8">
+          <span class="card-badge" style="background:#EF5EA5">Naturaleza</span>
+          <img src="img/que-visitar/Reserva-Natural-Arroyo-Zabala-Necochea-San-Cayetano.jpg" alt="Reserva Arroyo Zabala" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <div class="card-cat" style="background:#EF5EA528;color:#8a1060">Naturaleza</div>
+          <div class="card-name">Reserva Arroyo Zabala</div>
+          <div class="card-desc">Reserva natural con flora y fauna autóctona, senderos interpretativos y observación de aves.</div>
+          <div class="card-meta"><div class="card-meta-item">📍 Zona rural</div><div class="card-meta-item">🦅 Avistaje de aves</div></div>
+          <div class="card-link">Ver más →</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ <!-- FOOTER -->
+ <footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="img/logo.png" alt="Necochea Turismo" decoding="async">
+        </div>
+        <div class="footer-desc">Secretaría de Turismo de Necochea. Destino turístico de la costa atlántica bonaerense. Mar, naturaleza y cultura.</div>
+        <br><br><br>
+        <div class="footer-socials" aria-label="Redes sociales">
+          <a class="f-social" href="#" aria-label="Facebook">
+            <img src="img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="f-social" href="#" aria-label="Instagram">
+            <img src="img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="f-social" href="#" aria-label="YouTube">
+            <img src="img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="f-social" href="#" aria-label="Twitter / X">
+            <img src="img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="f-social" href="#" aria-label="TikTok">
+            <img src="img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation">
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navegación</div>
+          <a class="footer-link" href="index.html">Inicio</a>
+          <a class="footer-link" href="que-visitar.html">Qué Visitar</a>
+          <a class="footer-link" href="servicios.html">Servicios</a>
+          <a class="footer-link" href="que-hacer.html">Qué Hacer</a>
+          <a class="footer-link" href="noticias.html">Noticias</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <a class="footer-link" href="#">📍 Necochea, Buenos Aires</a>
+        <a class="footer-link" href="#">📞 (02262) 123-456</a>
+        <a class="footer-link" href="#">✉ turismo@necochea.gob.ar</a>
+        <div style="margin-top:14px">
+          <div class="footer-col-title">WhatsApp</div>
+          <a class="footer-link" href="#">+54 9 2262 431-153</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Necochea Turismo — Municipalidad de Necochea — Todos los derechos reservados</span>
+      <span class="footer-badge">necochea.tur.ar</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<div class="wa-float">
+  <div class="wa-tooltip">¡Consultanos por WhatsApp!</div>
+  <a class="wa-btn" href="https://wa.me/5492262431153?text=Hola%20Necochea%20Turismo,%20contanos%20que%20Necesitas?" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp con Necochea Turismo">
+    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
