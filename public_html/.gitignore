@@ -1,0 +1,9 @@
+# Imágenes subidas (carpeta por publicación: img/tipo/id/)
+img/noticia/**/*
+!img/noticia/.gitkeep
+img/servicio/**/*
+!img/servicio/.gitkeep
+img/que-hacer/**/*
+!img/que-hacer/.gitkeep
+img/que-visitar/**/*
+!img/que-visitar/.gitkeep

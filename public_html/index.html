@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necochea Turismo</title>
+    <link rel="icon" href="img/ico.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <img src="img/logo.png" alt="Logo Necochea Turismo">
+        </div>
+
+        <div class="nav-links">
+          <div class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="que-visitar.html">Qué Visitar <span class="arrow">▾</span></a>
+            <div class="dropdown">
+              <a href="#">Lago de Los Cisnes</a>
+              <a href="#">Parque Miguel Lillo</a>
+              <a href="">Playas del Centro</a>
+              <a href="#">Paseo de La Ribera</a>
+              <a href="#">Playas de Quequén</a>
+              <a href="#">Termas Médano Blanco</a>
+              <a href="#">Parque Eólico</a>
+              <a href="#">Reserva Arroyo Zabala</a>
+              <a href="que-visitar.html" style="color:#8161AF;font-weight:700">Ver todos →</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="servicios.html">Servicios <span class="arrow">▾</span></a>
+            <div class="dropdown">
+              <a href="#">Alojamientos</a>
+              <a href="#">Gastronomía</a>
+              <a href="#">Balnearios</a>
+              <a href="#">Inmobiliarias</a>
+              <a href="#">Transporte</a>
+              <a href="#">Alquiler de Autos</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="que-hacer.html">Qué Hacer <span class="arrow">▾</span></a>
+            <div class="dropdown">
+              <a href="#">Surf y Bodyboard</a>
+              <a href="#">Cabalgatas</a>
+              <a href="#">Excursiones 4x4</a>
+              <a href="#">Parapente</a>
+              <a href="#">Paseo en Velero</a>
+              <a href="#">Pesca Deportiva</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="noticias.html">Noticias</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="hub.html">Hub</a>
+          </div>
+        </div>
+
+        <div class="nav-cta" aria-label="Redes sociales">
+          <a class="nav-social" href="https://www.facebook.com/NecocheaTur" target="_blank" aria-label="Facebook">
+            <img src="img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="nav-social" href="https://www.instagram.com/necocheatur/" target="_blank"aria-label="Instagram">
+            <img src="img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="nav-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" target="_blank" aria-label="YouTube">
+            <img src="img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="nav-social" href="https://x.com/NecocheaTur" target="_blank" aria-label="Twitter / X">
+            <img src="img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation">
+          </a>
+          <a class="nav-social" href="https://www.tiktok.com/@necocheatur" target="_blank"aria-label="TikTok">
+            <img src="img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation">
+          </a>
+        </div>
+
+        <!-- HAMBURGER MOBILE -->
+        <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
+          <div class="ham-line" style="width:22px"></div>
+          <div class="ham-line" style="width:16px"></div>
+          <div class="ham-line" style="width:22px"></div>
+        </div>
+      </div>
+
+      <!-- MOBILE MENU: `id="mobMenu"` — requerido por `js/main.js` (toggleMenu). -->
+      <div class="mob-menu" id="mobMenu">
+        <div class="mob-menu-inner">
+          <a class="mob-item active" href="index.html">Inicio <span class="arr">›</span></a>
+          <a class="mob-item" href="que-visitar.html">Qué Visitar <span class="arr">›</span></a>
+          <a class="mob-item" href="servicios.html">Servicios <span class="arr">›</span></a>
+          <a class="mob-item" href="que-hacer.html">Qué Hacer <span class="arr">›</span></a>
+          <a class="mob-item" href="noticias.html">Noticias <span class="arr">›</span></a>
+          <a class="mob-item" href="hub.html">Hub <span class="arr">›</span></a>
+          <div class="mob-socials" aria-label="Redes sociales">
+            <a class="mob-social" href="https://www.facebook.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.instagram.com/necocheatur/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://x.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><img src="img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.tiktok.com/@necocheatur" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation"></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+        <!-- HERO CARRUSEL: `#heroSlides` y `#heroDots` son manejados por `js/main.js`.
+          No cambiar IDs `heroSlides`/`heroDots` ni los botones de flecha. -->
+        <section class="hero" id="hero">
+      <div class="hero-slides" id="heroSlides">
+        <div class="hero-slide hero-slide-video" id="heroVideoSlide" hidden>
+          <div id="heroYoutubePlayer" class="hero-video-player" aria-label="Video promocional"></div>
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/Playa_Necochea.jpg" alt="Playa de Necochea">
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/Parque_Miguelillo.jpg" alt="Parque Miguelillo">
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/lago_cisnes.JPG" alt="Lago de los Cisnes">
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/Playa_Quequen.jpg" alt="Playa de Quequen">
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/cartel_neco.jpg" alt="Cartel de Necochea">
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/escollera.png" alt="Escollera de Necochea">
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/jardin_japones.jpeg" alt="Jardin Japones de Necochea">
+        </div>
+        <div class="hero-slide">
+          <img class="hero-slide-img" src="img/Fondos/puente_colgante.jpg" alt="Puente colgante de Necochea">
+        </div>
+        
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Bienvenido a Necochea</div>
+        <div class="hero-title">Descubrí Necochea</div>
+        <div class="hero-sub">Mar, naturaleza y aventura en la costa atlántica bonaerense</div>
+      </div>
+      <div class="hero-arrows">
+        <button class="hero-arrow" onclick="prevSlide()">‹</button>
+        <button class="hero-arrow" onclick="nextSlide()">›</button>
+      </div>
+      <div class="hero-dots" id="heroDots"></div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <div class="cats-section">
+      <div class="container">
+        <nav class="cats-grid" aria-label="Categorías según iconos">
+          <a class="cat-btn" href="servicios.html">
+            <span class="cat-icon"><img src="img/iconos/alojamiento.png" decoding="async" alt="" role="presentation"></span>
+            <span class="cat-name">Alojamiento</span>
+          </a>
+          <a class="cat-btn" href="servicios.html">
+            <span class="cat-icon"><img src="img/iconos/alquiler_autos.png" decoding="async" alt="" role="presentation"></span>
+            <span class="cat-name">Alquiler de Autos</span>
+          </a>
+          <a class="cat-btn" href="servicios.html">
+            <span class="cat-icon"><img src="img/iconos/balneario.png" decoding="async" alt="" role="presentation"></span>
+            <span class="cat-name">Balneario</span>
+          </a>
+          <a class="cat-btn" href="servicios.html">
+            <span class="cat-icon"><img src="img/iconos/farmacia.png" decoding="async" alt="" role="presentation"></span>
+            <span class="cat-name">Farmacia</span>
+          </a>
+          <a class="cat-btn" href="servicios.html">
+            <span class="cat-icon"><img src="img/iconos/gastronomia.png" decoding="async" alt="" role="presentation"></span>
+            <span class="cat-name">Gastronomía</span>
+          </a>
+          <a class="cat-btn" href="servicios.html">
+            <span class="cat-icon"><img src="img/iconos/transporte.png" decoding="async" alt="" role="presentation"></span>
+            <span class="cat-name">Transporte</span>
+          </a>
+          <a class="cat-btn" href="servicios.html">
+            <span class="cat-icon"><img src="img/iconos/telefonos_utiles.png" decoding="async" alt="" role="presentation"></span>
+            <span class="cat-name">Telefonos útiles</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- QUÉ VISITAR -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title">Qué Visitar</div>
+          <div class="section-ver" data-ver-todos data-href="que-visitar.html">Ver todos →</div>
+        </div>
+        <div class="section-sub">Los lugares imperdibles de Necochea y sus alrededores</div>
+        <div class="section-line" style="background:#8161AF"></div>
+        <!-- Grid de sección 'Qué Visitar' en home: `#home-visitar-grid`. Rellenado por `public-index.js`. -->
+        <div class="cards-grid" id="home-visitar-grid"></div>
+      </div>
+    </section>
+
+    <!-- QUÉ HACER -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title">Qué Hacer</div>
+          <div class="section-ver" data-ver-todos data-href="que-hacer.html">Ver todos →</div>
+        </div>
+        <div class="section-sub">Actividades y experiencias para todos los gustos</div>
+        <div class="section-line" style="background:#9DC138"></div>
+        <!-- Grid de sección 'Qué Hacer' en home: `#home-hacer-grid`. Rellenado por `public-index.js`. -->
+        <div class="cards-grid" id="home-hacer-grid"></div>
+      </div>
+    </section>
+
+    <!-- CLIMA -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" style="margin-bottom:16px">
+          <div class="section-title">Clima en Necochea</div>
+          <div id="clima-updated" style="font-size:11px;color:#aaa">Cargando…</div>
+        </div>
+        <div class="clima-box">
+          <div class="clima-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8CD4EF" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <div>
+            <div class="clima-city">Necochea, Buenos Aires, Argentina</div>
+            <div class="clima-temp" id="clima-temp">—</div>
+            <div class="clima-desc" id="clima-desc">Obteniendo datos…</div>
+            <div class="clima-extras" id="clima-extras"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTICIAS -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title">Noticias</div>
+          <div class="section-ver" data-ver-todos data-href="noticias.html">Ver todas →</div>
+        </div>
+        <div class="section-sub">Novedades, eventos y actualidad turística de Necochea</div>
+        <div class="section-line" style="background:#EF5EA5"></div>
+        <div class="news-grid" id="home-noticias-grid"></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">
+              <img src="img/logo.png" alt="Necochea Turismo" decoding="async">
+            </div>
+            <div class="footer-desc">Secretaría de Turismo de Necochea. Destino turístico de la costa atlántica bonaerense. Mar, naturaleza y cultura.</div>
+
+            <br><br><br>
+            <div class="footer-socials" aria-label="Redes sociales">
+              <a class="f-social" href="https://www.facebook.com/NecocheaTur" aria-label="Facebook">
+                <img src="img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.instagram.com/necocheatur/" aria-label="Instagram">
+                <img src="img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" aria-label="YouTube">
+                <img src="img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://x.com/NecocheaTur" aria-label="Twitter / X">
+                <img src="img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.tiktok.com/@necocheatur" aria-label="TikTok">
+                <img src="img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation">
+              </a>
+            </div>
+
+
+          </div>
+          <div>
+            <div class="footer-col-title">Navegación</div>
+              <a class="footer-link" href="index.html">Inicio</a>
+              <a class="footer-link" href="que-visitar.html">Qué Visitar</a>
+              <a class="footer-link" href="servicios.html">Servicios</a>
+              <a class="footer-link" href="que-hacer.html">Qué Hacer</a>
+              <a class="footer-link" href="noticias.html">Noticias</a>
+              <a class="footer-link" href="hub.html">Hub</a>
+          </div>
+          <div>
+            <div class="footer-col-title">Contacto</div>
+            <a class="footer-link" href="https://maps.app.goo.gl/sLsSgxBqdtAL6bMn6" target="_blank">📍 Necochea, Buenos Aires</a>
+            <a class="footer-link" href="#">📞 (02262) 431153 / 425665</a>
+            <a class="footer-link" href="mailto:turismo@necochea.gob.ar?body=Hola%20Necochea%20Turismo,%20Tengo%20una%20duda%20sobre:">✉ turismo@necochea.gob.ar</a>
+            <div style="margin-top:14px">
+              <div class="footer-col-title">WhatsApp</div>
+              <a class="footer-link" href="#">+54 9 2262 431-153</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2025 Necochea Turismo — Municipalidad de Necochea — Todos los derechos reservados</span>
+          <a class="footer-copy" href="formulario_login.html">Iniciar sesion</a>
+          <span class="footer-badge">necochea.tur.ar</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <div class="wa-float">
+      <div class="wa-tooltip">¡Consultanos por WhatsApp!</div>
+      <a class="wa-btn" href="https://wa.me/5492262431153?text=Hola%20Necochea%20Turismo,%20Necesito%20Ayuda%20Con: " target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp con Necochea Turismo">
+        <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+
+  <script src="js/site-config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/public-site.js"></script>
+  <script src="js/public-index.js"></script>
+  <script src="js/clima.js"></script>
+  </body>
+</html>
