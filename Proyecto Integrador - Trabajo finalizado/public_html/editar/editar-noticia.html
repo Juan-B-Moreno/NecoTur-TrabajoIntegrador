@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar noticia — necochea.tur.ar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="inner-page page-formulario page-admin-panel">
+
+    <!-- NAVBAR (barra de navegacion)-->
+    <nav class="navbar">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <img src="../img/logo.png" alt="Logo Necochea Turismo">
+        </div>
+
+        <div class="admin-welcome-bar">
+          <div class="admin-welcome-inner container">
+            <div class="welcome-text">Bienvenido: <span class="welcome-text-span">(nombre de usuario)</span></div>
+          </div>
+        </div>
+
+        <div class="nav-cta">
+          <div class="nav-item nav-item-admin" id="navAdminWrap">
+            <!-- Boton que abre/cierra el menu de administracion. ID: `adminMenuToggle`.
+                 `admin-nav.js` gestiona el comportamiento (aria-expanded, show/hide). -->
+            <button type="button" class="nav-admin-toggle" id="adminMenuToggle" aria-label="Menú de administración" aria-expanded="false" aria-controls="adminDropdown">
+              <span class="nav-admin-burger" aria-hidden="true">
+                <span class="ham-line" style="width:18px"></span>
+                <span class="ham-line" style="width:14px"></span>
+                <span class="ham-line" style="width:18px"></span>
+              </span>
+              <span class="nav-admin-label">Admin</span>
+            </button>
+              <!-- Contenido del dropdown administrativo. ID: `adminDropdown`. Formularios
+                dentro pueden enviar acciones (por ejemplo el logout). -->
+              <div class="dropdown admin-dropdown" id="adminDropdown">
+              <a href="../panel_admin.html">Panel principal</a>
+              <a href="../formulario_admin.html">Cargar contenido</a>
+              <a href="../crear-usuario.html">Crear usuario</a>
+              <a href="../gestion/gestionar-usuarios.html">Gestionar usuarios</a>
+              <form action="/api/auth/logout" method="post" style="margin:0;">
+                <button type="submit">Cerrar sesión</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="nav-hamburger" onclick="toggleMenu()">
+          <div class="ham-line" style="width:22px"></div>
+          <div class="ham-line" style="width:16px"></div>
+          <div class="ham-line" style="width:22px"></div>
+        </div>
+      </div>
+      <!-- MOBILE MENU -->
+      <!-- Menu movil (toggle via `toggleMenu()` en `main.js`). ID: `mobMenu`. -->
+      <div class="mob-menu" id="mobMenu">
+        <div class="mob-menu-inner">
+          <a class="mob-item" href="../index.html"><span>Inicio</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../que-visitar.html"><span>Qué Visitar</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../servicios.html"><span>Servicios</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../que-hacer.html"><span>Qué Hacer</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../noticias.html"><span>Noticias</span><span class="arr">›</span></a>
+          <div class="mob-admin-block">
+            <div class="mob-admin-title">Administración</div>
+            <a class="mob-item" href="../panel_admin.html"><span>Panel principal</span><span class="arr">›</span></a>
+            <a class="mob-item" href="../formulario_admin.html"><span>Cargar contenido</span><span class="arr">›</span></a>
+            <a class="mob-item active" href="../crear-usuario.html"><span>Crear usuario</span><span class="arr">›</span></a>
+            <a class="mob-item" href="../gestion/gestionar-usuarios.html"><span>Gestionar usuarios</span><span class="arr">›</span></a>
+          </div>
+          <div class="mob-socials" aria-label="Redes sociales">
+            <a class="mob-social" href="https://www.facebook.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="../img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.instagram.com/necocheatur/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="../img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="../img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://x.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><img src="../img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.tiktok.com/@necocheatur" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="../img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation"></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../gestion/gestionar-noticias.html">Gestionar noticias</a> › <span>Gestionar usuarios</span></div>
+    <div class="page-title">Editar noticia</div>
+    <!-- `#editar-sub` se utiliza para mensajes/subtítulos relacionados al proceso de edición -->
+    <div class="page-sub" id="editar-sub">Modificá los datos de la noticia</div>
+    <div class="page-line" style="background:#EF5EA5"></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <!-- Formulario de edición. ID: `form-editar`.
+         `editar-contenido.js` usa `window.EDITAR_CONFIG` (apiBase, populate, serialize)
+         para cargar/guardar datos. No cambiar el id del form ni los nombres de los campos. -->
+    <form id="form-editar" class="form-wrapper form-noticia" enctype="multipart/form-data">
+      <!-- Elemento de alerta: se muestra mensajes de error/éxito. ID: `editar-alert` -->
+      <p id="editar-alert" class="admin-alert" hidden></p>
+      <div class="form-group">
+        <label class="form-label">Imágenes actuales</label>
+        <!-- Galería de imágenes actuales. `imagenes-form.js` renderiza miniaturas
+             dentro de `#editar-imagenes-galeria` y marca imagenes para eliminar
+             actualizando el campo oculto `#eliminar_imagenes` (JSON array). -->
+        <div id="editar-imagenes-galeria" class="editar-imagenes-galeria"></div>
+        <!-- Campo oculto que contiene IDs/nombres de imágenes a eliminar (JSON). -->
+        <input type="hidden" id="eliminar_imagenes" name="eliminar_imagenes" value="[]">
+        <p id="editar-imagenes-hint" class="form-hint"></p>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="editar-imagenes-nuevas">Agregar imágenes</label>
+        <div class="form-file-input">
+          <!-- Input de archivos: ID `editar-imagenes-nuevas`. `imagenes-form.js`
+               escucha `change` y previene archivos inválidos (tipo/tamaño). -->
+          <input type="file" id="editar-imagenes-nuevas" name="imagenes" accept="image/jpeg,image/png,image/webp" multiple>
+          <span>Seleccionar archivos</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="titulo">Título <span class="required">*</span></label>
+        <input type="text" id="titulo" name="titulo" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="descripcion">Descripción breve <span class="required">*</span></label>
+        <textarea id="descripcion" name="descripcion" class="form-textarea" maxlength="200" required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="contenido">Contenido completo</label>
+        <textarea id="contenido" name="contenido" class="form-textarea"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="fecha">Fecha <span class="required">*</span></label>
+          <input type="date" id="fecha" name="fecha" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lugar">Lugar</label>
+          <input type="text" id="lugar" name="lugar" class="form-input">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Filtros</label>
+        <div class="filtros-checkboxes">
+          <label class="filtro-check"><input type="checkbox" name="filtros" value="Necochea"> Necochea</label>
+          <label class="filtro-check"><input type="checkbox" name="filtros" value="Quequen"> Quequen</label>
+          <label class="filtro-check"><input type="checkbox" name="filtros" value="Playa"> Playa</label>
+          <label class="filtro-check"><input type="checkbox" name="filtros" value="Parque"> Parque</label>
+          <label class="filtro-check"><input type="checkbox" name="filtros" value="Actividades"> Actividades</label>
+        </div>
+        <p class="form-hint">Elegí uno o más. Se usan para filtrar en la página de noticias.</p>
+      </div>
+      <div class="form-actions">
+        <!-- Boton enviar: activa la validación y envio gestionado por `editar-contenido.js`. -->
+        <button type="submit" class="btn btn-primary" style="background:#EF5EA5;border-color:#EF5EA5">Guardar cambios</button>
+        <!-- Boton cancelar: su enlace puede ser reemplazado a `gestionar-mis-noticias` si el usuario es rol 'usuario'. -->
+        <a href="../gestion/gestionar-noticias.html" class="btn btn-secondary" id="btn-cancelar">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">
+              <img src="../img/logo.png" alt="Necochea Turismo" decoding="async">
+            </div>
+            <div class="footer-desc">Secretaría de Turismo de Necochea. Destino turístico de la costa atlántica bonaerense. Mar, naturaleza y cultura.</div>
+
+            <br><br><br>
+            <div class="footer-socials" aria-label="Redes sociales">
+              <a class="f-social" href="https://www.facebook.com/NecocheaTur" aria-label="Facebook">
+                <img src="../img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.instagram.com/necocheatur/" aria-label="Instagram">
+                <img src="../img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" aria-label="YouTube">
+                <img src="../img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://x.com/NecocheaTur" aria-label="Twitter / X">
+                <img src="../img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.tiktok.com/@necocheatur" aria-label="TikTok">
+                <img src="../img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation">
+              </a>
+            </div>
+
+
+          </div>
+          <div>
+            <div class="footer-col-title">Navegación</div>
+              <a class="footer-link" href="../index.html">Inicio</a>
+              <a class="footer-link" href="../que-visitar.html">Qué Visitar</a>
+              <a class="footer-link" href="../servicios.html">Servicios</a>
+              <a class="footer-link" href="../que-hacer.html">Qué Hacer</a>
+              <a class="footer-link" href="../noticias.html">Noticias</a>
+              <a class="footer-link" href="../hub.html">Hub</a>
+          </div>
+          <div>
+            <div class="footer-col-title">Contacto</div>
+            <a class="footer-link" href="https://maps.app.goo.gl/sLsSgxBqdtAL6bMn6" target="_blank">📍 Necochea, Buenos Aires</a>
+            <a class="footer-link" href="#">📞 (02262) 431153 / 425665</a>
+            <a class="footer-link" href="mailto:turismo@necochea.gob.ar?body=Hola%20Necochea%20Turismo,%20Tengo%20una%20duda%20sobre:">✉ turismo@necochea.gob.ar</a>
+            <div style="margin-top:14px">
+              <div class="footer-col-title">WhatsApp</div>
+              <a class="footer-link" href="#">+54 9 2262 431-153</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2025 Necochea Turismo — Municipalidad de Necochea — Todos los derechos reservados</span>
+          <a class="footer-copy" href="../formulario_login.html">Iniciar sesion</a>
+          <span class="footer-badge">necochea.tur.ar</span>
+        </div>
+      </div>
+    </footer>
+
+<!-- Scripts principales: comportamiento y autenticación de panel -->
+<script src="../js/main.js"></script>
+<script src="../js/panel-auth.js"></script>
+<script src="../js/admin-nav.js"></script>
+<script src="../js/imagenes-form.js"></script>
+<script src="../js/filtros-form.js"></script>
+<!--
+  Configuración para `editar-contenido.js`.
+  - apiBase: endpoint base para las noticias (usado en fetch/PUT/POST).
+  - dataKey: clave donde viene el objeto del servidor.
+  - populate(form,item): función que rellena el formulario con los datos recibidos.
+  - serialize(form): función que extrae los datos del form para enviar al servidor.
+-->
+<script>
+window.EDITAR_CONFIG = {
+  apiBase: '/api/noticias',
+  dataKey: 'noticia',
+  redirectOk: '../gestion/gestionar-noticias.html?actualizado=1',
+  redirectOkUser: '../gestion/gestionar-mis-noticias.html?actualizado=1',
+  populate: function(form, item) {
+    form.titulo.value = item.nombre || '';
+    form.descripcion.value = item.descripcion || '';
+    form.contenido.value = item.info || '';
+    var f = item.fecha ? String(item.fecha) : '';
+    form.fecha.value = f ? f.slice(0, 10) : '';
+    form.lugar.value = item.direccion || '';
+    if (window.FiltrosForm) window.FiltrosForm.setChecked(form, item.filtros);
+  },
+  serialize: function(form) {
+    return {
+      titulo: form.titulo.value,
+      descripcion: form.descripcion.value,
+      contenido: form.contenido.value,
+      fecha: form.fecha.value,
+      lugar: form.lugar.value
+    };
+  }
+};
+// Detecta rol del usuario para ajustar comportamiento (redirigir/cancelar)
+fetch('/api/auth/me', { credentials: 'same-origin' }).then(function(r){return r.json();}).then(function(d){
+  if (d.ok && d.user && d.user.rol === 'usuario') {
+    window.EDITAR_CONFIG.redirectOk = window.EDITAR_CONFIG.redirectOkUser;
+    var c = document.getElementById('btn-cancelar');
+    if (c) c.href = '../gestion/gestionar-mis-noticias.html';
+  }
+});
+</script>
+<script src="../js/editar-contenido.js"></script>
+</body>
+</html>

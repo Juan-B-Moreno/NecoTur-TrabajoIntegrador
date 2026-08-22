@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestionar usuarios — necochea.tur.ar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="inner-page page-formulario page-admin-panel">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <img src="../img/logo.png" alt="Logo Necochea Turismo">
+        </div>
+
+        <div class="admin-welcome-bar">
+          <div class="admin-welcome-inner container">
+            <div class="welcome-text">Bienvenido: <span class="welcome-text-span">(nombre de usuario)</span></div>
+          </div>
+        </div>
+
+        <div class="nav-cta">
+          <div class="nav-item nav-item-admin" id="navAdminWrap">
+            <!-- Boton administrador: ID `adminMenuToggle` (controlado por `admin-nav.js`) -->
+            <button type="button" class="nav-admin-toggle" id="adminMenuToggle" aria-label="Menú de administración" aria-expanded="false" aria-controls="adminDropdown">
+              <span class="nav-admin-burger" aria-hidden="true">
+                <span class="ham-line" style="width:18px"></span>
+                <span class="ham-line" style="width:14px"></span>
+                <span class="ham-line" style="width:18px"></span>
+              </span>
+              <span class="nav-admin-label">Admin</span>
+            </button>
+            <div class="dropdown admin-dropdown" id="adminDropdown">
+              <a href="../panel_admin.html">Panel principal</a>
+              <a href="../formulario_admin.html">Cargar contenido</a>
+              <a href="gestionar-noticias.html">Gestionar noticias</a>
+              <a href="gestionar-servicios.html">Gestionar servicios</a>
+              <a href="gestionar-que-hacer.html">Gestionar qué hacer</a>
+              <a href="gestionar-que-visitar.html">Gestionar qué visitar</a>
+              <a href="../crear-usuario.html">Crear usuario</a>
+              <a href="gestionar-usuarios.html">Gestionar usuarios</a>
+              <form action="/api/auth/logout" method="post" style="margin:0;">
+                <button type="submit">Cerrar sesión</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="nav-hamburger" onclick="toggleMenu()">
+          <div class="ham-line" style="width:22px"></div>
+          <div class="ham-line" style="width:16px"></div>
+          <div class="ham-line" style="width:22px"></div>
+        </div>
+      </div>
+      <!-- MOBILE MENU -->
+      <!-- Menu movil: ID `mobMenu`. Toggle implementado en `main.js` -->
+      <div class="mob-menu" id="mobMenu">
+        <div class="mob-menu-inner">
+          <a class="mob-item" href="../index.html"><span>Inicio</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../que-visitar.html"><span>Qué Visitar</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../servicios.html"><span>Servicios</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../que-hacer.html"><span>Qué Hacer</span><span class="arr">›</span></a>
+          <a class="mob-item" href="../noticias.html"><span>Noticias</span><span class="arr">›</span></a>
+          <div class="mob-admin-block">
+            <div class="mob-admin-title">Administración</div>
+            <a class="mob-item" href="../panel_admin.html"><span>Panel principal</span><span class="arr">›</span></a>
+            <a class="mob-item" href="../formulario_admin.html"><span>Cargar contenido</span><span class="arr">›</span></a>
+            <a class="mob-item" href="../crear-usuario.html"><span>Crear usuario</span><span class="arr">›</span></a>
+            <a class="mob-item active" href="gestionar-usuarios.html"><span>Gestionar usuarios</span><span class="arr">›</span></a>
+          </div>
+          <div class="mob-socials" aria-label="Redes sociales">
+            <a class="mob-social" href="https://www.facebook.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="../img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.instagram.com/necocheatur/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="../img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="../img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://x.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><img src="../img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation"></a>
+            <a class="mob-social" href="https://www.tiktok.com/@necocheatur" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="../img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation"></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../panel_admin.html">Panel admin</a> › <span>Gestionar usuarios</span></div>
+    <div class="page-title">Gestionar usuarios</div>
+    <!-- `page-sub`: breve descripcion / estado de la vista de gestion -->
+    <div class="page-sub">Listá y modificá los usuarios registrados en el sistema</div>
+    <div class="page-line" style="background:#8161AF"></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="admin-panel-block">
+      <div class="admin-toolbar">
+        <a href="../crear-usuario.html" class="btn btn-primary">+ Crear usuario</a>
+        <a href="../panel_admin.html" class="btn btn-secondary">Volver al panel</a>
+      </div>
+      <p id="usuarios-gestion-ok" class="admin-alert admin-alert--ok" hidden></p>
+      <p id="usuarios-gestion-error" class="admin-alert" hidden></p>
+      <div class="admin-table-wrap">
+        <table class="admin-table" aria-label="Usuarios del sistema">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>DNI</th>
+              <th>Rol</th>
+              <th>ID</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="usuarios-gestion-tbody">
+            <!-- Filas dinamicas: `gestionar-usuarios.js` / `usuarios-admin.js` rellenan este tbody -->
+            <tr><td colspan="7" class="admin-table-loading">Cargando usuarios…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">
+              <img src="../img/logo.png" alt="Necochea Turismo" decoding="async">
+            </div>
+            <div class="footer-desc">Secretaría de Turismo de Necochea. Destino turístico de la costa atlántica bonaerense. Mar, naturaleza y cultura.</div>
+
+            <br><br><br>
+            <div class="footer-socials" aria-label="Redes sociales">
+              <a class="f-social" href="https://www.facebook.com/NecocheaTur" aria-label="Facebook">
+                <img src="../img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.instagram.com/necocheatur/" aria-label="Instagram">
+                <img src="../img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" aria-label="YouTube">
+                <img src="../img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://x.com/NecocheaTur" aria-label="Twitter / X">
+                <img src="../img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.tiktok.com/@necocheatur" aria-label="TikTok">
+                <img src="../img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation">
+              </a>
+            </div>
+
+
+          </div>
+          <div>
+            <div class="footer-col-title">Navegación</div>
+              <a class="footer-link" href="../index.html">Inicio</a>
+              <a class="footer-link" href="../que-visitar.html">Qué Visitar</a>
+              <a class="footer-link" href="../servicios.html">Servicios</a>
+              <a class="footer-link" href="../que-hacer.html">Qué Hacer</a>
+              <a class="footer-link" href="../noticias.html">Noticias</a>
+              <a class="footer-link" href="../hub.html">Hub</a>
+          </div>
+          <div>
+            <div class="footer-col-title">Contacto</div>
+            <a class="footer-link" href="https://maps.app.goo.gl/sLsSgxBqdtAL6bMn6" target="_blank">📍 Necochea, Buenos Aires</a>
+            <a class="footer-link" href="#">📞 (02262) 431153 / 425665</a>
+            <a class="footer-link" href="mailto:turismo@necochea.gob.ar?body=Hola%20Necochea%20Turismo,%20Tengo%20una%20duda%20sobre:">✉ turismo@necochea.gob.ar</a>
+            <div style="margin-top:14px">
+              <div class="footer-col-title">WhatsApp</div>
+              <a class="footer-link" href="#">+54 9 2262 431-153</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2025 Necochea Turismo — Municipalidad de Necochea — Todos los derechos reservados</span>
+          <a class="footer-copy" href="../formulario_login.html">Iniciar sesion</a>
+          <span class="footer-badge">necochea.tur.ar</span>
+        </div>
+      </div>
+    </footer>
+
+<!-- Scripts: `usuarios-admin.js` y `gestionar-usuarios.js` manejan las acciones sobre la tabla de usuarios -->
+<script src="../js/main.js"></script>
+<script src="../js/panel-auth.js"></script>
+<script src="../js/admin-nav.js"></script>
+<script src="../js/usuarios-admin.js"></script>
+<script src="../js/gestionar-usuarios.js"></script>
+</body>
+</html>

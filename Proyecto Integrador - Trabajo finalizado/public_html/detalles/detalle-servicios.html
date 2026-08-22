@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent a Car Necochea — Servicios — necochea.tur.ar</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="inner-page page-detalle-servicios" data-tipo="servicio">
+<!--barra de navegacion de la pagina-->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <a href="../index.html"><img src="../img/logo.png" alt="Logo Necochea Turismo"></a> <!--imagen del logo de necochea-->
+    </div>
+    <div class="nav-links">
+      <div class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></div> <!--boton de enlace al index-->
+      <div class="nav-item"><a class="nav-link" href="../que-visitar.html">Qué Visitar <span class="arrow">▾</span></a> <!--boton de enlace a que visitar-->
+        <div class="dropdown"><a href="#">Lago de Los Cisnes</a><a href="detalle-que-visitar.html">Playas del Centro</a><a href="../que-visitar.html" style="color:#8161AF;font-weight:700">Ver todos →</a></div>
+      </div>
+      <div class="nav-item"><a class="nav-link active" href="../servicios.html">Servicios <span class="arrow">▾</span></a> <!--boton de enlace a servicios-->
+        <div class="dropdown"><a href="#">Alojamientos</a><a href="detalle-servicios.html">Rent a Car Necochea</a><a href="#">Balnearios</a><a href="#">Transporte</a></div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="../que-hacer.html">Qué Hacer <span class="arrow">▾</span></a>  <!--boton de enlace a "que hacer"-->
+        <div class="dropdown"><a href="detalle-que-hacer.html">Surf y Bodyboard</a><a href="#">Cabalgatas</a><a href="#">Parapente</a></div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="../noticias.html">Noticias</a></div>  <!--boton de enlace a noticias-->
+    </div>
+    <div class="nav-cta" aria-label="Redes sociales">  <!--boton de enlace a las redes sociales de la secretaria de turismo-->
+      <a class="nav-social" href="#" aria-label="Facebook"><img src="../img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="Instagram"><img src="../img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="YouTube"><img src="../img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="Twitter / X"><img src="../img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation"></a>
+      <a class="nav-social" href="#" aria-label="TikTok"><img src="../img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation"></a>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <div class="ham-line" style="width:22px"></div><div class="ham-line" style="width:16px"></div><div class="ham-line" style="width:22px"></div>
+    </div>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <div class="mob-menu-inner">
+      <a class="mob-item" href="../index.html"><span>Inicio</span><span class="arr">›</span></a>
+      <a class="mob-item" href="../que-visitar.html"><span>Qué Visitar</span><span class="arr">›</span></a>
+      <a class="mob-item active" href="../servicios.html"><span>Servicios</span><span class="arr">›</span></a>
+      <a class="mob-item" href="../que-hacer.html"><span>Qué Hacer</span><span class="arr">›</span></a>
+      <a class="mob-item" href="../noticias.html"><span>Noticias</span><span class="arr">›</span></a>
+      <div class="mob-socials" aria-label="Redes sociales">
+        <a class="mob-social" href="https://www.facebook.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="../img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation"></a>
+        <a class="mob-social" href="https://www.instagram.com/necocheatur/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="../img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation"></a>
+        <a class="mob-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="../img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation"></a>
+        <a class="mob-social" href="https://x.com/NecocheaTur" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><img src="../img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation"></a>
+        <a class="mob-social" href="https://www.tiktok.com/@necocheatur" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="../img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation"></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="section">
+  <div class="container">
+    <!-- Breadcrumb: se completa dinamicamente. Elemento clave: #detail-breadcrumb-current -->
+    <div class="detail-breadcrumb"><a href="../index.html">Inicio</a> › <a href="../servicios.html">Servicios</a> › <span id="detail-breadcrumb-current">Cargando…</span></div>
+
+    <div class="detail-main-grid">
+      <div class="detail-main-left">
+        <!-- Título del servicio: rellenado por `#detail-title-text` -->
+        <div class="detail-title-banner">
+          <h1 class="detail-title-text" id="detail-title-text">Cargando…</h1>
+        </div>
+        <!-- Bloque de descripción: `#detail-desc-block` contiene el texto descriptivo -->
+        <div class="detail-desc-block" id="detail-desc-block">
+          <h2>Descripción</h2>
+          <p>Cargando contenido…</p>
+        </div>
+      </div>
+      <div class="detail-main-right">
+        <!-- Carrusel de imagenes: usa `#detailSlides`; funciones: detailPrevSlide/Next/GoSlide -->
+        <div class="detail-carousel" id="detailCarousel">
+          <div class="detail-carousel-inner">
+            <div class="detail-slides" id="detailSlides"></div>
+            <div class="detail-arrows">
+              <button type="button" class="detail-arrow" onclick="detailPrevSlide()" aria-label="Foto anterior">‹</button>
+              <button type="button" class="detail-arrow" onclick="detailNextSlide()" aria-label="Foto siguiente">›</button>
+            </div>
+            <div class="detail-dots" role="tablist" aria-label="Seleccionar foto">
+              <button type="button" class="detail-dot active" onclick="detailGoSlide(0)" aria-label="Foto 1"></button>
+              <button type="button" class="detail-dot" onclick="detailGoSlide(1)" aria-label="Foto 2"></button>
+              <button type="button" class="detail-dot" onclick="detailGoSlide(2)" aria-label="Foto 3"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-contact-row">
+        <!-- Información de contacto: lista dinamicamente poblada en `#detail-contact-list` -->
+        <div class="detail-contact-block">
+          <h2>Información de contacto</h2>
+          <ul class="detail-contact-list" id="detail-contact-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Pie de pagina que incluye: informacion institucional, enlaces de navegación
+datos de contacto y redes sociales-->
+<!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">
+              <img src="../img/logo.png" alt="Necochea Turismo" decoding="async">
+            </div>
+            <div class="footer-desc">Secretaría de Turismo de Necochea. Destino turístico de la costa atlántica bonaerense. Mar, naturaleza y cultura.</div>
+
+            <br><br><br>
+            <div class="footer-socials" aria-label="Redes sociales">
+              <a class="f-social" href="https://www.facebook.com/NecocheaTur" aria-label="Facebook">
+                <img src="../img/iconos/redes/facebook.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.instagram.com/necocheatur/" aria-label="Instagram">
+                <img src="../img/iconos/redes/instagram.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.youtube.com/channel/UC-edzOVlS6aYk1RbDJtrOsQ" aria-label="YouTube">
+                <img src="../img/iconos/redes/youtube.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://x.com/NecocheaTur" aria-label="Twitter / X">
+                <img src="../img/iconos/redes/twiter.png" alt="" decoding="async" role="presentation">
+              </a>
+              <a class="f-social" href="https://www.tiktok.com/@necocheatur" aria-label="TikTok">
+                <img src="../img/iconos/redes/tik_tok.png" alt="" decoding="async" role="presentation">
+              </a>
+            </div>
+
+
+          </div>
+          <div>
+            <div class="footer-col-title">Navegación</div>
+              <a class="footer-link" href="../index.html">Inicio</a>
+              <a class="footer-link" href="../que-visitar.html">Qué Visitar</a>
+              <a class="footer-link" href="../servicios.html">Servicios</a>
+              <a class="footer-link" href="../que-hacer.html">Qué Hacer</a>
+              <a class="footer-link" href="../noticias.html">Noticias</a>
+              <a class="footer-link" href="../hub.html">Hub</a>
+          </div>
+          <div>
+            <div class="footer-col-title">Contacto</div>
+            <a class="footer-link" href="https://maps.app.goo.gl/sLsSgxBqdtAL6bMn6" target="_blank">📍 Necochea, Buenos Aires</a>
+            <a class="footer-link" href="#">📞 (02262) 431153 / 425665</a>
+            <a class="footer-link" href="mailto:turismo@necochea.gob.ar?body=Hola%20Necochea%20Turismo,%20Tengo%20una%20duda%20sobre:">✉ turismo@necochea.gob.ar</a>
+            <div style="margin-top:14px">
+              <div class="footer-col-title">WhatsApp</div>
+              <a class="footer-link" href="#">+54 9 2262 431-153</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2025 Necochea Turismo — Municipalidad de Necochea — Todos los derechos reservados</span>
+          <a class="footer-copy" href="../formulario_login.html">Iniciar sesion</a>
+          <span class="footer-badge">necochea.tur.ar</span>
+        </div>
+      </div>
+    </footer>
+
+<div class="wa-float">
+  <div class="wa-tooltip">¡Consultanos por WhatsApp!</div>
+  <a class="wa-btn" href="https://wa.me/5492262431153?text=Hola%20Necochea%20Turismo,%20contanos%20que%20Necesitas?" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp con Necochea Turismo">
+    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+
+<!-- Scripts (orden importante): `main.js`, `public-site.js`, luego `public-detalle.js` -->
+<script src="../js/main.js"></script>
+<script src="../js/public-site.js"></script>
+<script src="../js/public-detalle.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar usuario — necochea.tur.ar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="inner-page page-formulario page-admin-panel">
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo"><a href="../index.html"><img src="../img/logo.png" alt="Logo Necochea Turismo"></a></div>
+    <div class="nav-cta">
+      <div class="nav-item nav-item-admin" id="navAdminWrap">
+        <button type="button" class="nav-admin-toggle" id="adminMenuToggle" aria-label="Menú de administración" aria-expanded="false" aria-controls="adminDropdown">
+          <span class="nav-admin-burger" aria-hidden="true">
+            <span class="ham-line" style="width:18px"></span>
+            <span class="ham-line" style="width:14px"></span>
+            <span class="ham-line" style="width:18px"></span>
+          </span>
+          <span class="nav-admin-label">Admin</span>
+        </button>
+        <div class="dropdown admin-dropdown" id="adminDropdown">
+          <a href="../panel_admin.html">Panel principal</a>
+          <a href="../formulario_admin.html">Cargar contenido</a>
+          <a href="../gestion/gestionar-noticias.html">Gestionar noticias</a>
+          <a href="../gestion/gestionar-servicios.html">Gestionar servicios</a>
+          <a href="../gestion/gestionar-que-hacer.html">Gestionar qué hacer</a>
+          <a href="../gestion/gestionar-que-visitar.html">Gestionar qué visitar</a>
+          <a href="../crear-usuario.html">Crear usuario</a>
+          <a href="../gestion/gestionar-usuarios.html">Gestionar usuarios</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
+      <div class="ham-line" style="width:22px"></div>
+      <div class="ham-line" style="width:16px"></div>
+      <div class="ham-line" style="width:22px"></div>
+    </div>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <div class="mob-menu-inner">
+      <div class="mob-admin-block">
+        <div class="mob-admin-title">Administración</div>
+        <a class="mob-item" href="../gestion/gestionar-usuarios.html"><span>Gestionar usuarios</span><span class="arr">›</span></a>
+        <a class="mob-item active" href="editar-usuario.html"><span>Editar usuario</span><span class="arr">›</span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-welcome-bar">
+  <div class="admin-welcome-inner container">
+    <div class="welcome-text">Bienvenido: <span>(nombre de usuario)</span></div>
+    <form action="/api/auth/logout" method="post" style="margin:0;">
+      <button type="submit" class="btn btn-secondary admin-logout-btn">Cerrar sesión</button>
+    </form>
+  </div>
+</div>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../panel_admin.html">Panel admin</a> › <a href="../gestion/gestionar-usuarios.html">Gestionar usuarios</a> › <span>Editar</span></div>
+    <div class="page-title">Editar usuario</div>
+    <p class="page-sub" id="editar-usuario-sub">Modificá los datos del usuario seleccionado</p>
+    <div class="page-line" style="background:#8161AF"></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <!-- Formulario de edicion de usuario. ID: `form-editar-usuario`.
+         `editar-usuario.js` gestiona la carga/guardado usando `#usuario-id`. -->
+    <form id="form-editar-usuario" class="form-wrapper">
+      <!-- ID del usuario a editar (hidden). ID: `usuario-id` -->
+      <input type="hidden" id="usuario-id" name="id_usuario">
+      <!-- Alerta para errores/ok: `form-usuario-alert` -->
+      <p id="form-usuario-alert" class="admin-alert" hidden></p>
+
+      <div class="form-header">
+        <div class="form-header-icon" style="background:#8161AF28; color:#4a2080">✎</div>
+        <div>
+          <h2 class="form-title">Datos del usuario</h2>
+          <p class="form-desc">Dejá la contraseña en blanco si no querés cambiarla.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="nombre">Nombre completo <span class="required">*</span></label>
+        <input id="nombre" name="nombre" type="text" class="form-input" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="usuario">Nombre de usuario <span class="required">*</span></label>
+        <input id="usuario" name="usuario" type="text" class="form-input" required autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email <span class="required">*</span></label>
+        <input id="email" name="email" type="email" class="form-input" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="dni">DNI</label>
+        <input id="dni" name="dni" type="text" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="contrasena">Nueva contraseña</label>
+        <input id="contrasena" name="contrasena" type="password" class="form-input" placeholder="Dejar vacío para no cambiar" autocomplete="new-password">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="rol">Rol</label>
+        <select id="rol" name="rol" class="form-input">
+          <option value="usuario">usuario</option>
+          <option value="admin">admin</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <!-- Submit: `editar-usuario.js` maneja el envío y validaciones. -->
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <a href="../gestion/gestionar-usuarios.html" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Scripts: `usuarios-admin.js` gestiona la tabla/acciones, `editar-usuario.js` carga y guarda el formulario -->
+<script src="../js/main.js"></script>
+<script src="../js/panel-auth.js"></script>
+<script src="../js/admin-nav.js"></script>
+<script src="../js/usuarios-admin.js"></script>
+<script src="../js/editar-usuario.js"></script>
+</body>
+</html>

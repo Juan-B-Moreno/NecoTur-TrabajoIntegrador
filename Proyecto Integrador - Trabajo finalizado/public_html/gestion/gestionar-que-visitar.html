@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestionar qué visitar — necochea.tur.ar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="inner-page page-formulario page-admin-panel">
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo"><img src="../img/logo.png" alt="Logo Necochea Turismo"></div>
+    <div class="admin-welcome-bar">
+      <div class="admin-welcome-inner container">
+        <div class="welcome-text">Bienvenido: <span class="welcome-text-span">(nombre de usuario)</span></div>
+      </div>
+    </div>
+      <div class="nav-cta">
+      <div class="nav-item nav-item-admin" id="navAdminWrap">
+        <!-- Boton administrador: ID `adminMenuToggle` (controlado por `admin-nav.js`) -->
+        <button type="button" class="nav-admin-toggle" id="adminMenuToggle" aria-label="Menú de administración" aria-expanded="false" aria-controls="adminDropdown">
+          <span class="nav-admin-burger" aria-hidden="true">
+            <span class="ham-line" style="width:18px"></span>
+            <span class="ham-line" style="width:14px"></span>
+            <span class="ham-line" style="width:18px"></span>
+          </span>
+          <span class="nav-admin-label">Admin</span>
+        </button>
+        <div class="dropdown admin-dropdown" id="adminDropdown">
+          <a href="../panel_admin.html">Panel principal</a>
+          <a href="../formulario_admin.html">Cargar contenido</a>
+          <a href="gestionar-noticias.html">Gestionar noticias</a>
+          <a href="gestionar-servicios.html">Gestionar servicios</a>
+          <a href="gestionar-que-hacer.html">Gestionar qué hacer</a>
+          <a href="gestionar-que-visitar.html">Gestionar qué visitar</a>
+          <a href="../crear-usuario.html">Crear usuario</a>
+          <a href="gestionar-usuarios.html">Gestionar usuarios</a>
+          <form action="/api/auth/logout" method="post" style="margin:0;">
+            <button type="submit">Cerrar sesión</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <div class="ham-line" style="width:22px"></div>
+      <div class="ham-line" style="width:16px"></div>
+      <div class="ham-line" style="width:22px"></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../panel_admin.html">Panel admin</a> › <span>Gestionar qué visitar</span></div>
+    <div class="page-title">Gestionar qué visitar</div>
+    <!-- `page-sub`: breve descripcion / estado de la vista de gestion -->
+    <div class="page-sub">Listá, editá y eliminá lugares</div>
+    <div class="page-line" style="background:#8CD4EF"></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="admin-panel-block">
+      <div class="admin-toolbar">
+        <a href="../formulario_admin.html" class="btn btn-primary">+ Nuevo lugar</a>
+        <a href="../panel_admin.html" class="btn btn-secondary">Volver al panel</a>
+      </div>
+      <p id="gestion-ok" class="admin-alert admin-alert--ok" hidden></p>
+      <p id="gestion-error" class="admin-alert" hidden></p>
+      <!-- Tabla de resultados: `#gestion-tbody` es rellenada por `gestion-contenido.js`. -->
+      <div class="admin-table-wrap">
+        <table class="admin-table" aria-label="Lugares">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Contacto</th>
+              <th>Autor</th>
+              <th>ID</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="gestion-tbody">
+            <!-- Filas dinamicas: `window.GESTION_CONFIG` define `apiList`, `idField`, `columns`, `editUrl`. -->
+            <tr><td colspan="5" class="admin-table-loading">Cargando…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/main.js"></script>
+<script src="../js/panel-auth.js"></script>
+<script src="../js/admin-nav.js"></script>
+<!-- Configuracion para `gestion-contenido.js`.
+     Propiedades clave: `apiList`, `apiBase`, `dataKey`, `idField`, `editUrl`, `columns`, `deleteConfirm`, `emptyMsg`. -->
+<script>
+window.GESTION_CONFIG = {
+  apiList: '/api/que-visitar',
+  apiBase: '/api/que-visitar',
+  dataKey: 'lugares',
+  idField: 'id_lugar',
+  editUrl: '../editar/editar-que-visitar.html',
+  listPage: 'gestionar-que-visitar.html',
+  deleteConfirm: '¿Eliminar este lugar?',
+  emptyMsg: 'No hay lugares.',
+  columns: [
+    { key: 'nombre' },
+    { key: 'contacto' },
+    { key: 'creador_usuario' }
+  ]
+};
+</script>
+<script src="../js/gestion-contenido.js"></script>
+</body>
+</html>

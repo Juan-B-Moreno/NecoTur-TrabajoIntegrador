@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de instalación — Necochea Turismo</title>
+  <link rel="stylesheet" href="manual.css">
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-badge">Manual técnico · v1.0</div>
+  <h1>Instalación en servidor</h1>
+  <p class="subtitle">Guía para programadores que despliegan el sistema en un entorno nuevo (local o producción).</p>
+  <div class="cover-meta">
+    <span>👤 Audiencia: Programador / DevOps</span>
+    <span>⏱ Lectura: ~20 min</span>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <p class="sidebar-title">Contenido</p>
+    <nav>
+      <a href="#desc">Descripción</a>
+      <a href="#req">Requisitos</a>
+      <a href="#estructura">Estructura</a>
+      <a href="#local">Instalación local</a>
+      <a href="#prod">Producción</a>
+      <a href="#bd">Base de datos</a>
+      <a href="#check">Checklist</a>
+      <a href="#problemas">Problemas</a>
+      <a class="nav-index" href="index.html">← Índice manuales</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <a class="back-link" href="index.html">← Volver al índice</a>
+
+    <div class="summary-grid">
+      <div class="summary-card accent-violet">
+        <div class="label">Stack</div>
+        <div class="value">Node.js + Express<small>MySQL / MariaDB</small></div>
+      </div>
+      <div class="summary-card accent-rosa">
+        <div class="label">Tiempo estimado</div>
+        <div class="value">~20 min<small>Instalación completa</small></div>
+      </div>
+      <div class="summary-card accent-celeste">
+        <div class="label">Entorno prod.</div>
+        <div class="value">WNPower<small>juanm.com.ar</small></div>
+      </div>
+      <div class="summary-card accent-naranja">
+        <div class="label">Punto crítico</div>
+        <div class="value">Carpeta js/<small>Sin ella el sitio queda vacío</small></div>
+      </div>
+    </div>
+
+    <div class="flow-pipeline">
+      <div class="flow-step"><div class="num">1</div><div class="title">Base de datos</div><div class="desc">Importar SQL</div></div>
+      <div class="flow-step"><div class="num">2</div><div class="title">Configurar</div><div class="desc">Archivo .env</div></div>
+      <div class="flow-step"><div class="num">3</div><div class="title">Instalar</div><div class="desc">npm install</div></div>
+      <div class="flow-step"><div class="num">4</div><div class="title">Verificar</div><div class="desc">API + js/</div></div>
+      <div class="flow-step"><div class="num">5</div><div class="title">Desplegar</div><div class="desc">Hosting Node</div></div>
+    </div>
+
+    <section class="section" id="desc">
+      <h2><span class="section-num">1</span> Descripción del sistema</h2>
+      <p>Sitio web turístico con frontend estático, backend Node.js y base MySQL/MariaDB.</p>
+      <table>
+        <thead><tr><th>Capa</th><th>Tecnología</th><th>Ubicación</th></tr></thead>
+        <tbody>
+          <tr><td>Frontend</td><td>HTML, CSS, JavaScript</td><td><code>public_html/</code></td></tr>
+          <tr><td>Backend</td><td>Node.js + Express</td><td><code>server/</code></td></tr>
+          <tr><td>Base de datos</td><td>MySQL / MariaDB</td><td>Panel del hosting</td></tr>
+          <tr><td>Auth</td><td>Sesiones + bcrypt</td><td><code>/api/auth</code></td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-info">
+        <strong>Arquitectura</strong>
+        Un solo proceso Node sirve el sitio estático <strong>y</strong> la API REST bajo <code>/api/</code>.
+      </div>
+    </section>
+
+    <section class="section" id="req">
+      <h2><span class="section-num">2</span> Requisitos</h2>
+      <table>
+        <thead><tr><th>Componente</th><th>Versión mínima</th></tr></thead>
+        <tbody>
+          <tr><td>Node.js</td><td>18+</td></tr>
+          <tr><td>MySQL / MariaDB</td><td>5.7+ / 10.x</td></tr>
+          <tr><td>Hosting</td><td>Soporte Node.js (Passenger, WNPower, etc.)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="estructura">
+      <h2><span class="section-num">3</span> Estructura del proyecto</h2>
+      <pre><code>carpeta-padre/
+├── server/              ← Backend Node.js
+│   ├── src/app.js       ← Punto de entrada
+│   ├── package.json
+│   └── .env             ← Credenciales (NO commitear)
+└── public_html/         ← Sitio web
+    ├── index.html
+    ├── js/              ← ¡Obligatorio en el servidor!
+    ├── img/
+    ├── gestion/
+    ├── editar/
+    └── detalles/</code></pre>
+    </section>
+
+    <section class="section" id="local">
+      <h2><span class="section-num">4</span> Instalación local</h2>
+      <ol class="steps">
+        <li>Crear base MySQL (ej. <code>necotur</code>) e importar <code>juanm_necotur.sql</code></li>
+        <li>Copiar <code>server/.env.example</code> → <code>server/.env</code> y completar credenciales</li>
+        <li>Ejecutar <code>npm install</code> dentro de <code>server/</code></li>
+        <li>Arrancar con <code>npm run dev</code></li>
+        <li>Abrir <code>http://localhost:3000</code> (nunca el HTML directo desde disco)</li>
+      </ol>
+      <h3>Variables de entorno mínimas</h3>
+      <pre><code>PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=tu_clave
+DB_NAME=necotur
+SESSION_SECRET=string_largo_y_aleatorio_min_32_chars
+NODE_ENV=development</code></pre>
+      <div class="callout callout-ok">
+        <strong>Verificación exitosa</strong>
+        En consola debe aparecer: <code>MySQL conectado: localhost/necotur</code>
+      </div>
+      <h3>URLs de prueba</h3>
+      <table>
+        <thead><tr><th>URL</th><th>Resultado esperado</th></tr></thead>
+        <tbody>
+          <tr><td><code>/api/public/noticias?limit=3</code></td><td>JSON con <code>"ok": true</code></td></tr>
+          <tr><td><code>/js/public-site.js</code></td><td>Código JS (no 404)</td></tr>
+          <tr><td><code>/formulario_login.html</code></td><td>Pantalla de login</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="prod">
+      <h2><span class="section-num">5</span> Despliegue en producción (WNPower)</h2>
+      <ol class="steps">
+        <li>Subir <code>server/</code> completo y ejecutar <code>npm install</code> en el servidor</li>
+        <li>Subir <code>public_html/</code> <strong>completa</strong>, incluida la carpeta <code>js/</code></li>
+        <li>Crear base en el panel e importar el SQL</li>
+        <li>Configurar <code>.env</code> con credenciales del hosting (<code>DB_NAME=usuario_necotur</code>)</li>
+        <li>Crear app Node.js apuntando a <code>server/src/app.js</code></li>
+        <li>Reiniciar la aplicación tras cada cambio</li>
+      </ol>
+      <div class="callout callout-warn">
+        <strong>Error frecuente</strong>
+        Subir HTML y CSS pero olvidar <code>public_html/js/</code> → el sitio carga vacío aunque la API funcione.
+      </div>
+      <h3>Permisos de escritura</h3>
+      <p>Node debe poder escribir en <code>public_html/img/{tipo}/{id}/</code> al subir imágenes.</p>
+    </section>
+
+    <section class="section" id="bd">
+      <h2><span class="section-num">6</span> Base de datos</h2>
+      <table>
+        <thead><tr><th>Tabla</th><th>Contenido</th></tr></thead>
+        <tbody>
+          <tr><td><code>usuarios</code></td><td>Login (roles admin / usuario)</td></tr>
+          <tr><td><code>noticias</code></td><td>Noticias (+ columna <code>filtros</code>)</td></tr>
+          <tr><td><code>servicios</code></td><td>Servicios turísticos</td></tr>
+          <tr><td><code>que_hacer</code></td><td>Actividades</td></tr>
+          <tr><td><code>que_visitar</code></td><td>Lugares</td></tr>
+        </tbody>
+      </table>
+      <p>Referencia completa: <code>juanm_necotur.sql</code> en la raíz del proyecto.</p>
+    </section>
+
+    <section class="section" id="check">
+      <h2><span class="section-num">7</span> Checklist post-despliegue</h2>
+      <ul class="checklist">
+        <li><code>/api/public/noticias?limit=3</code> devuelve JSON</li>
+        <li><code>/js/public-site.js</code> devuelve JavaScript (no 404)</li>
+        <li>El index muestra tarjetas con contenido</li>
+        <li>Login redirige al panel correcto</li>
+        <li>Log muestra <code>MySQL conectado: ...</code></li>
+        <li>HTTPS activo en el dominio</li>
+        <li><code>SESSION_SECRET</code> único en producción</li>
+      </ul>
+    </section>
+
+    <section class="section" id="problemas">
+      <h2><span class="section-num">8</span> Solución de problemas</h2>
+      <table>
+        <thead><tr><th>Síntoma</th><th>Causa probable</th><th>Solución</th></tr></thead>
+        <tbody>
+          <tr><td>Sitio vacío, login OK</td><td>Falta carpeta <code>js/</code></td><td>Subir <code>public_html/js/</code> completa</td></tr>
+          <tr><td>Cannot GET /api/...</td><td>Node no enruta el dominio</td><td>Revisar config Node en panel</td></tr>
+          <tr><td>Error MySQL al iniciar</td><td><code>.env</code> incorrecto</td><td>Verificar <code>DB_NAME</code> y credenciales</td></tr>
+          <tr><td>Imágenes rotas</td><td>Archivos no subidos</td><td>Verificar <code>public_html/img/...</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<div class="manual-footer">
+  <a href="index.html">Índice de manuales</a> · Necochea Turismo · Manual del programador
+</div>
+</body>
+</html>
